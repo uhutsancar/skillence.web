@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <!-- Background radial gradient (orta parlak merkez, koyu kenar) -->
+    <radialGradient id="bg" cx="35%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#f6a9d4"></stop>
+      <stop offset="45%" stop-color="#b79ff9"></stop>
+      <stop offset="100%" stop-color="#5f6ef1"></stop>
+    </radialGradient>
+
+    <!-- 'S' için parlaklık gradyanı -->
+    <linearGradient id="sGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"></stop>
+      <stop offset="100%" stop-color="#e8eaff" stop-opacity="0.98"></stop>
+    </linearGradient>
+
+    <!-- İç gölge (inner shadow) -->
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="blur"></feGaussianBlur>
+      <feOffset dy="1" in="blur" result="offsetBlur"></feOffset>
+      <feComposite in="offsetBlur" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="inner"></feComposite>
+      <feColorMatrix in="inner" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.45 0"></feColorMatrix>
+      <feBlend in="SourceGraphic" in2="inner" mode="normal"></feBlend>
+    </filter>
+
+    <!-- Dış yumuşak gölge -->
+    <filter id="softDrop" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.20"></feDropShadow>
+    </filter>
+
+    <!-- Metin için hafif gölge -->
+    <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.6" flood-color="#000" flood-opacity="0.32"></feDropShadow>
+    </filter>
+
+    <!-- highlight blur -->
+    <filter id="glow" x="-200%" y="-200%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="1.6" in="SourceGraphic" result="g"></feGaussianBlur>
+    </filter>
+  </defs>
+
+  <!-- Dış yumuşak gölge ile arka plan yuvarlağı -->
+  <g filter="url(#softDrop)">
+    <circle cx="16" cy="16" r="14" fill="url(#bg)"></circle>
+  </g>
+
+  <!-- İnce rim parlaklık -->
+  <circle cx="16" cy="16" r="14" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"></circle>
+
+  <!-- Üst sol parlama (blur ile) -->
+  <ellipse cx="11.2" cy="10.2" rx="5.0" ry="3.0" fill="#ffffff" opacity="0.18" filter="url(#glow)"></ellipse>
+
+  <!-- İç gölge uygulanmış katman (derinlik efekti için) -->
+  <g filter="url(#innerShadow)">
+    <circle cx="16" cy="16" r="14" fill="transparent"></circle>
+  </g>
+
+  <!-- 'S' harfi, ortalanmış, hafif gölge ile -->
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-weight="700" font-size="14" fill="url(#sGrad)" filter="url(#textShadow)">
+    S
+  </text>
+</svg>

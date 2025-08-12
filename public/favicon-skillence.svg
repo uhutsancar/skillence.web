@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="bg64" cx="33%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#fff2f8" stop-opacity="0.9"></stop>
+      <stop offset="30%" stop-color="#f6a9d4"></stop>
+      <stop offset="65%" stop-color="#b79ff9"></stop>
+      <stop offset="100%" stop-color="#5f6ef1"></stop>
+    </radialGradient>
+    <linearGradient id="s64" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"></stop>
+      <stop offset="100%" stop-color="#eaeaff"></stop>
+    </linearGradient>
+
+    <filter id="softDrop64" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.22"></feDropShadow>
+    </filter>
+
+    <filter id="inner64" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.2" result="b"></feGaussianBlur>
+      <feOffset dy="2" in="b" result="ob"></feOffset>
+      <feComposite in="ob" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="inner"></feComposite>
+      <feColorMatrix in="inner" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.45 0"></feColorMatrix>
+      <feBlend in="SourceGraphic" in2="inner" mode="normal"></feBlend>
+    </filter>
+  </defs>
+
+  <g filter="url(#softDrop64)">
+    <circle cx="32" cy="32" r="28" fill="url(#bg64)"></circle>
+  </g>
+
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#fff" stroke-opacity="0.06" stroke-width="1.4"></circle>
+
+  <ellipse cx="22.5" cy="20.5" rx="9" ry="5.5" fill="#fff" opacity="0.16" style="filter: blur(2px)"></ellipse>
+
+  <g filter="url(#inner64)">
+    <circle cx="32" cy="32" r="28" fill="transparent"></circle>
+  </g>
+
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-weight="700" font-size="28" fill="url(#s64)">
+    S
+  </text>
+</svg>
