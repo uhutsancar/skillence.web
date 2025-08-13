@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Resumind" },
+    { title: "Skillence" },
     { name: "description", content: "Smart feedback for your dream job!" },
   ];
 }
@@ -44,11 +44,11 @@ export default function Home() {
 
     <section className="main-section">
       <div className="page-heading py-16">
-        <h1>Track Your Applications & Resume Ratings</h1>
+        <h1>Başvurularınızı ve Özgeçmiş Puanlarınızı Takip Edin</h1>
         {!loadingResumes && resumes?.length === 0 ? (
-            <h2>No resumes found. Upload your first resume to get feedback.</h2>
+            <h2>Özgeçmiş bulunamadı. Geri bildirim almak için ilk özgeçmişinizi yükleyin.</h2>
         ): (
-          <h2>Review your submissions and check AI-powered feedback.</h2>
+          <h2>Gönderilerinizi inceleyin ve yapay zeka destekli geri bildirimleri kontrol edin.</h2>
         )}
       </div>
       {loadingResumes && (
@@ -68,7 +68,7 @@ export default function Home() {
       {!loadingResumes && resumes?.length === 0 && (
           <div className="flex flex-col items-center justify-center mt-10 gap-4">
             <Link to="/upload" className="primary-button w-fit text-xl font-semibold">
-              Upload Resume
+             Özgeçmişi Yükle
             </Link>
           </div>
       )}

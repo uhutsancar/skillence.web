@@ -29,8 +29,8 @@ const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
   const subtitle = score > 69
     ? 'Great Job!'
     : score > 49
-      ? 'Good Start'
-      : 'Needs Improvement';
+      ? 'İyi Bir Başlangıç'
+      : 'İyileştirmeye ihtiyaç var';
 
   return (
     <div className={`bg-gradient-to-b ${gradientClass} to-white rounded-2xl shadow-md w-full p-6`}>
@@ -38,7 +38,7 @@ const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
       <div className="flex items-center gap-4 mb-6">
         <img src={iconSrc} alt="ATS Score Icon" className="w-12 h-12" />
         <div>
-          <h2 className="text-2xl font-bold">ATS Score - {score}/100</h2>
+          <h2 className="text-2xl font-bold">ATS Puanı - {score}/100</h2>
         </div>
       </div>
 
@@ -46,7 +46,7 @@ const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
       <div className="mb-6">
         <h3 className="text-xl font-semibold mb-2">{subtitle}</h3>
         <p className="text-gray-600 mb-4">
-          This score represents how well your resume is likely to perform in Applicant Tracking Systems used by employers.
+        Bu puan, özgeçmişinizin işverenler tarafından kullanılan Başvuru Takip Sistemlerinde ne kadar iyi performans göstereceğini temsil eder.
         </p>
 
         {/* Suggestions list */}
@@ -68,7 +68,7 @@ const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
 
       {/* Closing encouragement */}
       <p className="text-gray-700 italic">
-        Keep refining your resume to improve your chances of getting past ATS filters and into the hands of recruiters.
+        ATS filtrelerini geçip işe alım uzmanlarının eline geçme şansınızı artırmak için özgeçmişinizi sürekli olarak geliştirin.
       </p>
     </div>
   )

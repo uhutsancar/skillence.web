@@ -225,17 +225,52 @@ export const AIResponseFormat = `
       };
     }`;
 
-export const prepareInstructions = ({jobTitle, jobDescription}: { jobTitle: string; jobDescription: string; }) =>
-    `You are an expert in ATS (Applicant Tracking System) and resume analysis.
-      Please analyze and rate this resume and suggest how to improve it.
-      The rating can be low if the resume is bad.
-      Be thorough and detailed. Don't be afraid to point out any mistakes or areas for improvement.
-      If there is a lot to improve, don't hesitate to give low scores. This is to help the user to improve their resume.
-      If available, use the job description for the job user is applying to to give more detailed feedback.
-      If provided, take the job description into consideration.
-      The job title is: ${jobTitle}
-      The job description is: ${jobDescription}
-      Provide the feedback using the following format:
-      ${AIResponseFormat}
-      Return the analysis as an JSON object, without any other text and without the backticks.
-      Do not include any other text or comments.`;
+// export const prepareInstructions = ({jobTitle, jobDescription}: { jobTitle: string; jobDescription: string; }) =>
+//     `You are an expert in ATS (Applicant Tracking System) and resume analysis.
+//       Please analyze and rate this resume and suggest how to improve it.
+//       The rating can be low if the resume is bad.
+//       Be thorough and detailed. Don't be afraid to point out any mistakes or areas for improvement.
+//       If there is a lot to improve, don't hesitate to give low scores. This is to help the user to improve their resume.
+//       If available, use the job description for the job user is applying to to give more detailed feedback.
+//       If provided, take the job description into consideration.
+//       The job title is: ${jobTitle}
+//       The job description is: ${jobDescription}
+//       Provide the feedback using the following format:
+//       ${AIResponseFormat}
+//       Return the analysis as an JSON object, without any other text and without the backticks.
+//       Do not include any other text or comments.`;
+
+
+
+
+
+
+
+
+export const prepareInstructions = ({
+  jobTitle,
+  jobDescription,
+}: {
+  jobTitle: string;
+  jobDescription: string;
+}) => `
+Sen bir ATS (Aday Takip Sistemi) ve özgeçmiş analizi uzmanısın.
+Görevin: Bu özgeçmişi analiz et, puanla ve nasıl iyileştirileceğine dair ayrıntılı öneriler üret.
+Gerekirse düşük puan ver; amaç kullanıcının CV'sini geliştirmesine yardım etmektir.
+Varsa iş ilanı açıklamasını dikkate al ve ona göre özelleştirilmiş geri bildirim ver.
+
+Kurallar (çok önemli):
+- YALNIZCA Türkçe yaz.
+- Çıktıyı YALNIZCA GEÇERLİ bir JSON nesnesi olarak döndür.
+- JSON dışında hiçbir yazı, açıklama, kod bloğu, backtick vb. ekleme.
+- JSON’da anahtar adları İngilizce kalsın, metin içerikleri Türkçe olsun.
+- Çift tırnak kullan ve geçersiz virgül/trailing comma bırakma.
+
+Kullanacağın iş unvanı: ${jobTitle}
+Kullanacağın iş ilanı açıklaması: ${jobDescription}
+
+JSON şeması (örnek):
+${AIResponseFormat}
+
+Yalnızca geçerli JSON döndür. Başka hiçbir metin yazma.
+`;
